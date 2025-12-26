@@ -3,17 +3,30 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
-
+import java.sql.Connection;
+import java.sql.SQLException;
 
 
 
 
 public class Main {
+	
+	
 	public static void main(String[] args) throws IOException {
+		
+	
+		try(Connection connect = ContactProgram.DBConnection()){
+			System.out.println("Connection success");
+		}catch(SQLException e) {
+			System.out.println("Error connecting to DB");
+		}
+			
+		
 		
 		Scanner scnr = new Scanner(System.in);         // creating scanner object
 		String userDir = System.getProperty("user.dir");  //getting current user directory in order to create a file in a correct path
